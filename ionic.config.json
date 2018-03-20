@@ -1,0 +1,8 @@
+{
+  "name": "marriage-biodata",
+  "app_id": "5ab124c5",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
