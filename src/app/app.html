@@ -7,8 +7,9 @@
 
   <ion-content>
     <ion-list>
-      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)" detail-none>
         {{p.title}}
+        <ion-icon name="logo-youtube" color="primary" item-end *ngIf="p.icon"></ion-icon>
       </button>
     </ion-list>
   </ion-content>

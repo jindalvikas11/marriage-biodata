@@ -1,0 +1,9 @@
+<ion-list>
+  <ion-list-header>Choose Theme</ion-list-header>
+  <ion-item *ngFor="let theme of themes" (click)="selectTheme(theme)" [style.background-image]="'url(' + theme.bgImage + ')'">
+    <div>
+      <h3 style="font-weight: 600;" [style.color]="theme.h3Color">Heading</h3>
+      <p [style.color]="theme.pColor">details</p>
+    </div>
+  </ion-item>
+</ion-list>

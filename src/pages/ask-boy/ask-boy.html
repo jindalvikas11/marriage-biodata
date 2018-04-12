@@ -1,0 +1,26 @@
+<!--
+  Generated template for the AskBoyPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon color="primary" name="menu"></ion-icon>
+    </button>
+    <ion-title>Ask Him</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-list>
+      <ion-item *ngFor="let que of questions">
+          <h3 style="white-space: normal;">{{ que }}</h3>
+          <p style="white-space: normal;">{{ askList[que] }}</p>
+      </ion-item>
+    </ion-list>
+</ion-content>

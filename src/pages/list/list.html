@@ -1,23 +1,17 @@
 <ion-header>
   <ion-navbar>
     <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
+      <ion-icon color="primary" name="menu"></ion-icon>
     </button>
-    <ion-title>List</ion-title>
+    <ion-title>Videos</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
   <ion-list>
-    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
-      <ion-icon [name]="item.icon" item-start></ion-icon>
-      {{item.title}}
-      <div class="item-note" item-end>
-        {{item.note}}
-      </div>
-    </button>
+    <ion-item *ngFor="let video of videoList" (click)="openVideo(video)">
+      <img src="{{ 'https://img.youtube.com/vi/' + video.id + '/0.jpg' }}">
+      <h2 style="white-space: normal;" *ngIf="video.description">{{ video.description }}</h2>
+    </ion-item>
   </ion-list>
-  <div *ngIf="selectedItem" padding>
-    You navigated here from <b>{{selectedItem.title}}</b>
-  </div>
 </ion-content>

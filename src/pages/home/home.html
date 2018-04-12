@@ -1,18 +1,139 @@
 <ion-header>
   <ion-navbar>
     <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
+      <ion-icon color="primary" name="menu"></ion-icon>
     </button>
     <ion-title>Home</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h3>Ionic Menu Starter</h3>
+  <form (ngSubmit)="onSubmit()" [formGroup]="infoForm">
+    <ion-item>
+      <ion-label stacked color="primary">Initial</ion-label>
+      <ion-select [(ngModel)]="info.name.value.initial" formControlName="initial">
+        <ion-option>Mr</ion-option>
+        <ion-option>Miss</ion-option>
+      </ion-select>
+    </ion-item>
 
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
+    <ion-item>
+      <ion-label stacked color="primary">{{ info.name.label }}</ion-label>
+      <ion-input type="text" [(ngModel)]="info.name.value.name" formControlName="name"></ion-input>
+    </ion-item>
 
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+    <ion-item>
+      <ion-label stacked color="primary">Father's Name</ion-label>
+      <ion-input type="text" [(ngModel)]="info.fatherName.value" formControlName="fatherName"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked color="primary">Father's Occupation</ion-label>
+      <ion-input type="text" [(ngModel)]="info.fatherOccupation.value" formControlName="fatherOccupation"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked color="primary">Mother's Name</ion-label>
+      <ion-input type="text" [(ngModel)]="info.motherName.value" formControlName="motherName"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked color="primary">Mother's Occupation</ion-label>
+      <ion-input type="text" [(ngModel)]="info.motherOccupation.value" formControlName="motherOccupation"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked color="primary">Place of Birth</ion-label>
+      <ion-input type="text" [(ngModel)]="info.placeOfBirth.value" formControlName="placeOfBirth"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked color="primary">Mobile</ion-label>
+      <ion-input type="number" [(ngModel)]="info.mobile.value" formControlName="mobile"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked color="primary">Address</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-input type="text" placeholder="House No (Optional)" [(ngModel)]="info.address.value.houseno" formControlName="houseno"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="text" placeholder="Street (Optional)" [(ngModel)]="info.address.value.street" formControlName="street"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="text" placeholder="Locality (Optional)" [(ngModel)]="info.address.value.locality" formControlName="locality"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="text" placeholder="City" [(ngModel)]="info.address.value.city" formControlName="city"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="text" placeholder="State" [(ngModel)]="info.address.value.state" formControlName="state"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="text" placeholder="Country" [(ngModel)]="info.address.value.country" formControlName="country"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked color="primary">Caste</ion-label>
+      <ion-input type="text" [(ngModel)]="info.caste.value" formControlName="caste"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked color="primary">Date of Birth</ion-label>
+      <ion-datetime displayFormat="MMM DD, YYYY" [(ngModel)]="info.dateOfBirth.value" formControlName="dateOfBirth"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked color="primary">Time of Birth</ion-label>
+      <ion-datetime displayFormat="hh:mm A" [(ngModel)]="info.timeOfBirth.value" formControlName="timeOfBirth"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="primary">Height</ion-label>
+      <ion-select [(ngModel)]="info.height.value.feet" formControlName="heightFeet">
+        <ion-option *ngFor="let i of heightFeet">{{ i }} Feet</ion-option>
+      </ion-select>
+      <ion-select [(ngModel)]="info.height.value.inch" formControlName="heightInch">
+        <ion-option *ngFor="let i of heightInch">{{ i }} Inches</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="primary">Weight</ion-label>
+      <ion-select [(ngModel)]="info.weight.value" formControlName="weight">
+        <ion-option *ngFor="let i of weightKG">{{ i }} kg</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked color="primary">Qualification</ion-label>
+      <ion-input type="text" [(ngModel)]="info.qualification.value" formControlName="qualification"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked color="primary">Occupation</ion-label>
+      <ion-input type="text" [(ngModel)]="info.occupation.value" formControlName="occupation"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label stacked color="primary">Annual Salary (Optional)</ion-label>
+        <ion-input type="text" [(ngModel)]="info.salary.value" formControlName="salary"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="primary">Photo (Optional)</ion-label>
+      <button type="button" ion-button icon-only (click)="uploadPhoto(true)" item-end>
+        <ion-icon name="camera"></ion-icon>
+      </button>
+      <button type="button" ion-button icon-only item-end (click)="uploadPhoto(false)">
+        <ion-icon name="md-photos"></ion-icon>
+      </button>
+    </ion-item>
+
+    <div padding>
+      <button color="navbar" style="margin:auto" ion-button type="submit" [disabled]="!infoForm.valid" block>Generate Biodata</button>
+    </div>
+
+  </form>
 </ion-content>
